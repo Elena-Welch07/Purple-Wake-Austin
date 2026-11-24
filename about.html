@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Captain & Crew | Purple Wake Austin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#6B3FA0;--purple-mid:#8B5FBF;--purple-lt:#D4B8F0;--purple-xlt:#F3ECFD;--off-white:#FAFAFA;--slate:#2A2535;--slate-mid:#4A4260;--radius-md:16px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--slate-mid);overflow-x:hidden;padding-top:112px;}
+#siteHeader{position:fixed;top:0;left:0;right:0;z-index:200;}
+#mainNav{display:flex;align-items:center;justify-content:space-between;padding:12px 48px;transition:background .3s;}
+#mainNav.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 24px rgba(107,63,160,.1);}
+.nav-logo img{height:52px;width:auto;}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.9);text-decoration:none;}
+#mainNav.scrolled .nav-links a{color:var(--slate-mid);}
+.nav-cta{background:#fff;color:var(--purple)!important;padding:10px 24px;border-radius:40px;font-weight:700!important;}
+#mainNav.scrolled .nav-cta{background:var(--purple)!important;color:#fff!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+#mainNav.scrolled .hamburger span{background:var(--slate);}
+#mobileMenu{display:none;position:fixed;inset:0;z-index:300;background:var(--slate);flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow-y:auto;padding:80px 20px 40px;}
+#mobileMenu a{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:2px;color:#fff;text-decoration:none;}
+#mobileMenu .mob-cta{background:var(--purple);padding:12px 40px;border-radius:50px;font-size:30px!important;}
+.contact-bar{background:var(--purple);padding:8px 48px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;}
+.contact-bar a{display:flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-size:13px;font-weight:600;}
+.contact-bar-div{width:1px;height:14px;background:rgba(255,255,255,.3);}
+.page-hero{position:relative;height:46vh;min-height:300px;display:flex;align-items:flex-end;overflow:hidden;margin-top:-112px;padding-top:112px;}
+.page-hero-bg{pointer-events:none;position:absolute;inset:0;background-image:url('images/hero.jpg');background-size:cover;background-position:center 40%;}
+.page-hero-overlay{pointer-events:none;position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,37,53,.2) 0%,rgba(42,37,53,.82) 100%);}
+.page-hero-content{position:relative;z-index:2;padding:0 64px 52px;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--purple-lt);margin-bottom:10px;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,90px);line-height:.93;color:#fff;letter-spacing:2px;}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:none;}
+.d1{transition-delay:.1s;}.d2{transition-delay:.2s;}.d3{transition-delay:.3s;}
+.btn{display:inline-block;background:var(--purple);color:#fff;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 36px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:background .2s;}
+.btn:hover{background:var(--purple-mid);}
+footer{background:var(--slate);padding:48px 64px 28px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.1);}
+.footer-logo img{height:48px;width:auto;}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;}
+.footer-links a:hover{color:var(--purple-lt);}
+.footer-bottom{padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.3);}
+
+/* ── CAPTAIN SECTION ── */
+.captain-section{padding:80px 64px;}
+.captain-inner{max-width:900px;margin:0 auto;}
+.captain-photos{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:40px;}
+.captain-photos img{width:100%;border-radius:var(--radius-md);object-fit:cover;aspect-ratio:4/5;}
+.captain-photos .action{object-position:20% center;}
+.captain-text{}
+.sec-label{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--purple);margin-bottom:10px;}
+.captain-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(44px,5vw,72px);letter-spacing:2px;color:var(--slate);line-height:.9;margin-bottom:6px;}
+.captain-title{font-size:13px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--purple-mid);margin-bottom:24px;}
+.captain-bio{font-size:16px;font-weight:300;line-height:1.85;color:var(--slate-mid);margin-bottom:24px;}
+.captain-bio p{margin-bottom:16px;}
+.captain-bio p:last-child{margin-bottom:0;}
+.tag-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.tag{background:var(--purple-xlt);color:var(--purple);font-size:12px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:6px 14px;border-radius:20px;}
+
+/* ── DIVIDER ── */
+.section-divider{height:1px;background:rgba(107,63,160,.1);margin:0 64px;}
+
+/* ── CREW SECTION ── */
+.crew-section{padding:80px 64px;}
+.crew-header{text-align:center;max-width:560px;margin:0 auto 64px;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,56px);letter-spacing:1px;color:var(--slate);line-height:1;margin-bottom:12px;}
+.sec-body{font-size:16px;font-weight:300;line-height:1.75;color:var(--slate-mid);}
+.crew-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:900px;margin:0 auto;}
+.crew-card{background:var(--off-white);border-radius:20px;overflow:hidden;border:1px solid rgba(107,63,160,.08);box-shadow:0 4px 32px rgba(107,63,160,.07);}
+.crew-card-img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;}
+.crew-card-body{padding:28px 28px 32px;}
+.crew-card-name{font-family:'Bebas Neue',sans-serif;font-size:36px;letter-spacing:1.5px;color:var(--slate);line-height:1;margin-bottom:4px;}
+.crew-card-role{font-size:11px;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;color:var(--purple);margin-bottom:16px;}
+.crew-card-bio{font-size:14px;font-weight:300;line-height:1.8;color:var(--slate-mid);margin-bottom:16px;}
+.crew-card .tag-row{margin-top:0;}
+
+/* ── CTA STRIP ── */
+.cta-strip{background:var(--purple);padding:80px 64px;text-align:center;}
+.cta-strip .sec-label{color:var(--purple-lt);}
+.cta-strip .sec-title{color:#fff;margin-bottom:12px;}
+.cta-strip p{font-size:17px;font-weight:300;color:rgba(255,255,255,.8);max-width:440px;margin:0 auto 28px;line-height:1.7;}
+.cta-strip .btn{background:#fff;color:var(--purple);}
+.cta-strip .btn:hover{background:var(--purple-lt);}
+
+@media(max-width:900px){
+  body{padding-top:96px;}
+  #mainNav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .contact-bar{padding:8px 20px;}
+  .page-hero-content{padding:0 24px 40px;}
+  .captain-section{padding:40px 20px;}
+  .captain-photos{grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px;}
+  .captain-photos img{aspect-ratio:3/4;}
+  .section-divider{margin:0 20px;}
+  .crew-section{padding:52px 20px;}
+  .crew-grid{grid-template-columns:1fr;max-width:420px;}
+  .cta-strip{padding:64px 24px;}
+  footer{padding:40px 24px 24px;}
+}
+</style>
+  <!-- Google Ads tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18034580260"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18034580260');
+  </script>
+<script>/* Public portfolio copy: no transactions or booking submissions. */
+(function(){
+  function blocked(el){
+    var action=(el.getAttribute('onclick')||'').toLowerCase();
+    var href=(el.getAttribute('href')||'').toLowerCase();
+    return /opencampmodal|campnext|docamppay|submitreq|showcs2|initcsq/.test(action)
+      || /squareup\.com\/appointments|squareup\.com\/checkout|docs\.google\.com\/forms/.test(href);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('a,button,input[type="submit"]');
+    if(el && blocked(el)){
+      e.preventDefault();e.stopImmediatePropagation();
+      alert('This is a portfolio demonstration. Booking and payments are disabled. Please visit purplewakeaustin.com for real bookings.');
+    }
+  },true);
+  document.addEventListener('submit',function(e){e.preventDefault();e.stopImmediatePropagation();alert('Forms are disabled in this portfolio demonstration.');},true);
+})();</script>
+</head>
+<body>
+<div id="portfolio-notice" style="position:relative;z-index:99999;background:#efe8ff;color:#35204f;text-align:center;padding:12px 18px;font:600 14px Arial,sans-serif;line-height:1.5">PORTFOLIO DEMO — Booking, payment, and event requests are disabled. For real bookings visit <a href="https://www.purplewakeaustin.com/" style="color:#50218a;text-decoration:underline">Purple Wake Austin</a>.</div>
+
+<div id="siteHeader">
+  <div class="contact-bar">
+    <a href="tel:5128392711">📞 512-839-2711</a>
+    <div class="contact-bar-div"></div>
+    <a href="mailto:elenafwelch@gmail.com">✉️ elenafwelch@gmail.com</a>
+    <div class="contact-bar-div"></div>
+    <a href="https://www.instagram.com/purplewake.watersports" target="_blank">📸 @purplewake.watersports</a>
+  </div>
+  <div id="mainNav">
+    <a href="index.html"><img src="images/logo.png" alt="Purple Wake" style="height:52px;width:auto;"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="camps.html">Camps</a></li>
+      <li><a href="privates.html">Privates</a></li>
+      <li><a href="events.html">Group Events</a></li>
+      <li><a href="what-to-expect.html">What to Expect</a></li>
+      <li><a href="about.html">Captain &amp; Crew</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privates.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
+<div id="mobileMenu">
+  <button onclick="closeMenu()" style="position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;line-height:1;">✕</button>
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="camps.html" onclick="closeMenu()">Camps</a>
+  <a href="privates.html" onclick="closeMenu()">Privates</a>
+  <a href="events.html" onclick="closeMenu()">Group Events</a>
+  <a href="what-to-expect.html" onclick="closeMenu()">What to Expect</a>
+  <a href="about.html" onclick="closeMenu()">Captain &amp; Crew</a>
+  <a href="faq.html" onclick="closeMenu()">FAQ</a>
+  <a href="privates.html" onclick="closeMenu()" class="mob-cta">Book Now</a>
+</div>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="eyebrow">The People Behind the Boat</div>
+    <h1 class="hero-title">Captain<br>&amp; Crew</h1>
+  </div>
+</div>
+
+<!-- CAPTAIN — ELENA -->
+<section class="captain-section">
+  <div class="captain-inner">
+    <div class="captain-photos reveal">
+      <img src="images/elena_headshot.jpg" alt="Elena Welch" class="headshot">
+      <img src="images/elena_action.jpg" alt="Elena on the water" class="action">
+    </div>
+    <div class="captain-text reveal d1">
+      <div class="sec-label">Your Captain</div>
+      <div class="captain-name">Elena<br>Welch</div>
+      <div class="captain-title">Owner &amp; Head Instructor</div>
+      <div class="captain-bio">
+        <p>Elena grew up right here in Steiner Ranch with Lake Austin practically in her backyard — and three younger siblings who made sure life was never boring. She got on her first board at 8 years old and never looked back — wakesurfing quickly became a passion, then a lifestyle, and eventually a calling.</p>
+        <p>What started as teaching friends for fun turned into something bigger when Elena realized how much she loved watching people light up the moment they get up for the first time. After four years of teaching riders from age 6 to 62, she's never once failed to get someone up — and that streak means everything to her.</p>
+        <p>Off the water, Elena is studying Mechanical Engineering at the University of Alabama, where she also competes on the club soccer team. She played varsity soccer at Vandegrift High School and brings that same competitive drive and team-first mentality to every session on the lake. She also served as the Head Soccer Coach and Cross Country Coach at International School of Texas, where her passion for coaching and working with young athletes only grew stronger. Her energy is contagious, her patience is endless, and her love for this sport is the real deal.</p>
+        <p>When she's not coaching wakesurf or wakeboard, you'll likely find her kiteboarding or wing foiling — two more water sports she's deeply passionate about and loves sharing with anyone curious enough to try.</p>
+      </div>
+      <div class="tag-row">
+        <span class="tag">4 Years Teaching</span>
+        <span class="tag">Ages 6–62</span>
+        <span class="tag">Wakesurfing</span>
+        <span class="tag">Wakeboarding</span>
+        <span class="tag">Foiling</span>
+        <span class="tag">Kiteboarding</span>
+        <span class="tag">Wing Foiling</span>
+        <span class="tag">Head Soccer Coach — IST</span>
+        <span class="tag">Cross Country Coach — IST</span>
+        <span class="tag">Steiner Ranch Local</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- CREW -->
+<section class="crew-section">
+  <div class="crew-header reveal">
+    <div class="sec-label">The Team</div>
+    <h2 class="sec-title">Meet the Crew</h2>
+    <p class="sec-body">Every session is better with the right people on the boat. Our crew brings skill, good energy, and a whole lot of fun to every single day on the lake.</p>
+  </div>
+
+  <div class="crew-grid">
+
+    <!-- COLBY -->
+    <div class="crew-card reveal d1">
+      <img src="images/colby_action.jpg" alt="Colby Carreira on the water" class="crew-card-img">
+      <div class="crew-card-body">
+        <div class="crew-card-name">Colby Carreira</div>
+        <div class="crew-card-role">Instructor &amp; Camp Photographer</div>
+        <div class="crew-card-bio">
+          Colby is the kind of person who makes everyone on the boat feel like they've known him for years. Originally from Austin, he's been instructing with Purple Wake for two years and has a natural gift for connecting with riders of every age and experience level — his humor and easy-going energy make even the toughest wipeouts fun.
+          <br><br>
+          Beyond the water, Colby is studying Pre-Med at the University of Alabama, where he is also part of the ROTC program — a commitment that reflects the discipline and leadership he brings to everything he does. He's also a talented photographer, and during camps he often captures drone footage and photos of riders on the water — some of the best memories families take home from the week.
+          <br><br>
+          A proud Vandegrift alum, Colby was also part of the FFA program in high school, which shaped a work ethic and community spirit that shows up in everything he does on and off the lake. When he's not on the water instructing or behind a camera, you'll find him deep sea fishing — another passion he and Jackson share and take just as seriously as anything else they do.
+        </div>
+        <div class="tag-row">
+          <span class="tag">2 Years Teaching</span>
+          <span class="tag">Photographer</span>
+          <span class="tag">Drone Videography</span>
+          <span class="tag">ROTC</span>
+          <span class="tag">Pre-Med @ Alabama</span>
+          <span class="tag">Deep Sea Fishing</span>
+          <span class="tag">Vandegrift HS</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- JACKSON -->
+    <div class="crew-card reveal d2">
+      <img src="images/jackson_action.jpg" alt="Jackson Welch on the water" class="crew-card-img">
+      <div class="crew-card-body">
+        <div class="crew-card-name">Jackson Welch</div>
+        <div class="crew-card-role">Instructor &amp; Kite Specialist</div>
+        <div class="crew-card-bio">
+          Jackson is one of those rare people who makes everything look effortless — on the water and off it. Sharp, funny, and genuinely passionate about water sports, he's been instructing with Purple Wake for two years and has built a reputation for being the kind of coach riders actually want to spend all day on a boat with.
+          <br><br>
+          His kiteboarding is something else entirely. Jackson is an exceptional kite athlete and a highly skilled kiteboarding instructor — one of the best you'll find in the Austin area. Whether he's coaching someone on a wakeboard or sending it on a kite, he brings that same focus, creativity, and love for the sport to everything he does.
+          <br><br>
+          When he's not on the water, Jackson is a competitive tennis player and an avid deep sea fisherman — a passion he shares with Colby. Whether he's coaching someone on a wakeboard or out on the open water chasing a catch, Jackson is most alive when he's surrounded by water.
+        </div>
+        <div class="tag-row">
+          <span class="tag">2 Years Teaching</span>
+          <span class="tag">Kiteboarding</span>
+          <span class="tag">Wakeboarding</span>
+          <span class="tag">Tennis</span>
+          <span class="tag">Deep Sea Fishing</span>
+          <span class="tag">Kite Instructor</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-strip">
+  <div class="reveal">
+    <div class="sec-label">Ready to Ride?</div>
+    <h2 class="sec-title">Come Meet Us<br>on the Lake</h2>
+    <p>Book a private lesson, a camp spot, or a group event — we'd love to get you out on the water.</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="privates.html" class="btn">Book a Private Lesson</a>
+      <a href="camps.html" class="btn" style="background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.4);color:#fff;">View Summer Camps</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="images/logo.png" alt="Purple Wake"></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="camps.html">Camps</a>
+      <a href="privates.html">Privates</a>
+      <a href="events.html">Group Events</a>
+      <a href="what-to-expect.html">What to Expect</a>
+      <a href="about.html">Captain &amp; Crew</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&#169; 2026 Purple Wake Austin. All rights reserved.</div>
+    <div class="footer-copy"><a href="mailto:elenafwelch@gmail.com">elenafwelch@gmail.com</a> &middot; 512-839-2711</div>
+  </div>
+</footer>
+
+<script>
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (window.scrollY > 10) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+window.dispatchEvent(new Event('scroll'));
+
+function toggleMenu() {
+  var m = document.getElementById('mobileMenu');
+  var isOpen = m.style.display === 'flex';
+  m.style.display = isOpen ? 'none' : 'flex';
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>FAQ | Purple Wake Austin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--purple:#6B3FA0;--purple-mid:#8B5FBF;--purple-lt:#D4B8F0;--purple-xlt:#F3ECFD;--off-white:#FAFAFA;--slate:#2A2535;--slate-mid:#4A4260;--radius-md:16px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--slate-mid);overflow-x:hidden;padding-top:112px;}
+#siteHeader{position:fixed;top:0;left:0;right:0;z-index:200;}
+#mainNav{display:flex;align-items:center;justify-content:space-between;padding:12px 48px;transition:background .3s;}
+#mainNav.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 24px rgba(107,63,160,.1);}
+.nav-logo img{height:52px;width:auto;}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.9);text-decoration:none;}
+#mainNav.scrolled .nav-links a{color:var(--slate-mid);}
+.nav-cta{background:#fff;color:var(--purple)!important;padding:10px 24px;border-radius:40px;font-weight:700!important;}
+#mainNav.scrolled .nav-cta{background:var(--purple)!important;color:#fff!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+#mainNav.scrolled .hamburger span{background:var(--slate);}
+#mobileMenu{display:none;position:fixed;inset:0;z-index:300;background:var(--slate);flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow-y:auto;padding:80px 20px 40px;}
+#mobileMenu a{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:2px;color:#fff;text-decoration:none;}
+#mobileMenu .mob-cta{background:var(--purple);padding:12px 40px;border-radius:50px;font-size:30px!important;}
+.contact-bar{background:var(--purple);padding:8px 48px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;}
+.contact-bar a{display:flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-size:13px;font-weight:600;}
+.contact-bar-div{width:1px;height:14px;background:rgba(255,255,255,.3);}
+.page-hero{position:relative;height:40vh;min-height:280px;display:flex;align-items:flex-end;overflow:hidden;margin-top:-112px;padding-top:112px;}
+.page-hero-bg{pointer-events:none;position:absolute;inset:0;background-image:url('images/wakeboard_hero.jpg');background-size:cover;background-position:center 30%;}
+.page-hero-overlay{pointer-events:none;position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,37,53,.2) 0%,rgba(42,37,53,.82) 100%);}
+.page-hero-content{position:relative;z-index:2;padding:0 64px 52px;}
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--purple-lt);margin-bottom:10px;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,90px);line-height:.93;color:#fff;letter-spacing:2px;}
+section{padding:72px 64px;}
+.btn{display:inline-block;background:var(--purple);color:#fff;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 36px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;}
+footer{background:var(--slate);padding:48px 64px 28px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.1);}
+.footer-logo img{height:48px;width:auto;}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;}
+.footer-bottom{padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.3);}
+.faq-wrap{max-width:780px;margin:0 auto;}
+.faq-category{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--purple);margin-bottom:20px;margin-top:48px;}
+.faq-category:first-child{margin-top:0;}
+.faq-item{border:1px solid rgba(107,63,160,.12);border-radius:12px;margin-bottom:10px;overflow:hidden;}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:20px 24px;cursor:pointer;font-weight:600;font-size:15px;color:var(--slate);gap:16px;}
+.faq-q:hover{background:var(--purple-xlt);}
+.faq-icon{font-size:20px;color:var(--purple);flex-shrink:0;transition:transform .25s;}
+.faq-item.open .faq-icon{transform:rotate(45deg);}
+.faq-a{display:none;padding:0 24px 20px;font-size:14px;font-weight:300;line-height:1.8;color:var(--slate-mid);}
+.faq-a a{color:var(--purple);font-weight:600;}
+.faq-item.open .faq-a{display:block;}
+@media(max-width:900px){
+  body{padding-top:96px;}
+  #mainNav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .contact-bar{background:var(--purple);padding:8px 48px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;}
+  section{padding:48px 20px;}
+  .page-hero-content{padding:0 24px 40px;}
+  footer{padding:40px 24px 24px;}
+}
+</style>
+  <!-- Google Ads tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18034580260"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18034580260');
+  </script>
+<script>/* Public portfolio copy: no transactions or booking submissions. */
+(function(){
+  function blocked(el){
+    var action=(el.getAttribute('onclick')||'').toLowerCase();
+    var href=(el.getAttribute('href')||'').toLowerCase();
+    return /opencampmodal|campnext|docamppay|submitreq|showcs2|initcsq/.test(action)
+      || /squareup\.com\/appointments|squareup\.com\/checkout|docs\.google\.com\/forms/.test(href);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('a,button,input[type="submit"]');
+    if(el && blocked(el)){
+      e.preventDefault();e.stopImmediatePropagation();
+      alert('This is a portfolio demonstration. Booking and payments are disabled. Please visit purplewakeaustin.com for real bookings.');
+    }
+  },true);
+  document.addEventListener('submit',function(e){e.preventDefault();e.stopImmediatePropagation();alert('Forms are disabled in this portfolio demonstration.');},true);
+})();</script>
+</head>
+<body>
+<div id="portfolio-notice" style="position:relative;z-index:99999;background:#efe8ff;color:#35204f;text-align:center;padding:12px 18px;font:600 14px Arial,sans-serif;line-height:1.5">PORTFOLIO DEMO — Booking, payment, and event requests are disabled. For real bookings visit <a href="https://www.purplewakeaustin.com/" style="color:#50218a;text-decoration:underline">Purple Wake Austin</a>.</div>
+<div id="siteHeader">
+  <div class="contact-bar">
+    <a href="tel:5128392711">📞 512-839-2711</a>
+    <div class="contact-bar-div"></div>
+    <a href="mailto:elenafwelch@gmail.com">✉️ elenafwelch@gmail.com</a>
+    <div class="contact-bar-div"></div>
+    <a href="https://www.instagram.com/purplewake.watersports" target="_blank">📸 @purplewake.watersports</a>
+  </div>
+  <div id="mainNav">
+    <a href="index.html"><img src="images/logo.png" alt="Purple Wake" style="height:52px;width:auto;"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="camps.html">Camps</a></li>
+      <li><a href="privates.html">Privates</a></li>
+      <li><a href="events.html">Group Events</a></li>
+      <li><a href="what-to-expect.html">What to Expect</a></li>
+      <li><a href="about.html">Captain &amp; Crew</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privates.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
+<div id="mobileMenu">
+  <button onclick="closeMenu()" style="position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;line-height:1;">✕</button>
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="camps.html" onclick="closeMenu()">Camps</a>
+  <a href="privates.html" onclick="closeMenu()">Privates</a>
+  <a href="events.html" onclick="closeMenu()">Group Events</a>
+  <a href="what-to-expect.html" onclick="closeMenu()" style="font-size:32px!important;">What to Expect</a>
+  <a href="about.html" onclick="closeMenu()">Captain &amp; Crew</a>
+  <a href="faq.html" onclick="closeMenu()" style="font-size:32px!important;">FAQ</a>
+  <a href="privates.html" onclick="closeMenu()" class="mob-cta">Book Now</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="eyebrow">Got Questions?</div>
+    <h1 class="hero-title">FAQ</h1>
+  </div>
+</div>
+
+<section>
+  <div class="faq-wrap">
+
+    <div class="faq-category">Getting Started</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Do I need any experience to book a lesson? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Nope — zero experience needed! Most of our riders are complete beginners. We coach all levels, from first-timers who have never been on a board to experienced riders pushing advanced skills. Just show up ready to have fun.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What age do you need to be to ride? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Riders should generally be 8 years old or older. Younger kids can sometimes join depending on their size and swimming ability — just reach out and we'll talk through it. For camps, ages 8+ are welcome for Half-Day and Full-Day, and 14+ for the Advanced Camp.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Do I need to know how to swim? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — all riders must be comfortable in open water. You don't need to be a competitive swimmer, but you should be able to stay calm and afloat on your own. Life jackets are provided and required for all riders.</div>
+    </div>
+
+    <div class="faq-category">Logistics & Location</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Where do sessions take place? <span class="faq-icon">+</span></div>
+      <div class="faq-a">We launch from <strong>Lake Austin Steiner Ranch Lake Club</strong> at 12320 River Bend Rd, Austin TX. <a href="https://maps.google.com/?q=Lake+Austin+Steiner+Ranch+Lake+Club,+12320+River+Bend+Rd,+Austin,+TX" target="_blank">Get directions →</a><br><br>We also offer pickup at the <strong>360 Bridge docks</strong> for an additional $25. If you have your own dock on Lake Austin, contact us for custom pricing.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Where should I park? <span class="faq-icon">+</span></div>
+      <div class="faq-a">There is parking available at Steiner Ranch Lake Club. Please arrive 10–15 minutes before your session so we can get on the water on time.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What should I bring? <span class="faq-icon">+</span></div>
+      <div class="faq-a">
+        • Swimsuit and towel<br>
+        • Sunscreen (we're out on the water the whole time — bring extra)<br>
+        • Water bottle<br>
+        • Snacks if it's a longer session or camp<br>
+        • A change of clothes for after<br><br>
+        <strong>We provide:</strong> Life jacket, board, rope, and all safety gear. You don't need to bring anything water sports related.
+      </div>
+    </div>
+
+    <div class="faq-item">
+
+    <div class="faq-category">Weather & Cancellations</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What happens if it rains? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Light rain doesn't stop us — you're going to get wet anyway! Sessions are only cancelled for lightning, severe weather, or unsafe conditions. If we need to cancel due to weather, you'll receive a full refund or can reschedule at no charge.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What's the cancellation policy for private lessons? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><strong>48+ hours before your session</strong> → Full refund<br><strong>Within 48 hours or no-show</strong> → No refund<br><br>If you need to reschedule, reach out as early as possible and we'll do our best to work with you.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What's the cancellation policy for camps? <span class="faq-icon">+</span></div>
+      <div class="faq-a"><strong>2+ weeks before camp</strong> → Full refund<br><strong>7–14 days before</strong> → 80% refund<br><strong>Less than 7 days</strong> → No refund</div>
+    </div>
+
+    <div class="faq-category">Booking & Payment</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">How do I book? <span class="faq-icon">+</span></div>
+      <div class="faq-a">For private lessons, head to our <a href="privates.html">Privates page</a> — you can pick your lesson type, choose a date and time, and pay securely through Square. For camps, go to the <a href="camps.html">Camps page</a> and click "Book Now." For group events, fill out the form on our <a href="events.html">Group Events page</a> and we'll follow up within 24 hours.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">What payment methods do you accept? <span class="faq-icon">+</span></div>
+      <div class="faq-a">We accept all major credit and debit cards, Apple Pay, and Google Pay through Square's secure checkout. Payment is collected at the time of booking.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Is there a waiver I need to sign? <span class="faq-icon">+</span></div>
+      <div class="faq-a">Yes — all participants must complete our waiver and emergency contact form before their first session. You only need to do this once per season. <a href="https://docs.google.com/forms/d/e/1FAIpQLSdHaQMb-Z_QAxGgeEd9O-GIKoT6ol5e4DfF408jgl82HGvFgw/viewform?usp=header" target="_blank">Complete the waiver here →</a></div>
+    </div>
+
+    <div style="background:var(--purple-xlt);border-radius:var(--radius-md);padding:32px;margin-top:48px;text-align:center;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--slate);letter-spacing:1px;margin-bottom:10px;">Still have questions?</div>
+      <p style="font-size:15px;color:var(--slate-mid);margin-bottom:20px;">We're happy to answer anything. Call, text, or email anytime.</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+        <a href="tel:5128392711" class="btn">Call 512-839-2711</a>
+        <a href="mailto:elenafwelch@gmail.com">elenafwelch@gmail.com</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="images/logo.png" alt="Purple Wake"></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="camps.html">Camps</a>
+      <a href="privates.html">Privates</a>
+      <a href="events.html">Group Events</a>
+      <a href="what-to-expect.html">What to Expect</a>
+      <a href="faq.html">FAQ</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">&#169; 2026 Purple Wake Austin. All rights reserved.</div>
+    <div class="footer-copy"><a href="mailto:elenafwelch@gmail.com">elenafwelch@gmail.com</a> &middot; 512-839-2711</div>
+  </div>
+</footer>
+
+<script>
+function toggle(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+
+function toggleMenu() {
+  var m = document.getElementById('mobileMenu');
+  var isOpen = m.style.display === 'flex';
+  m.style.display = isOpen ? 'none' : 'flex';
+  document.body.style.overflow = isOpen ? '' : 'hidden';
+}
+function closeMenu() {
+  document.getElementById('mobileMenu').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (window.scrollY > 10) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+window.dispatchEvent(new Event('scroll'));
+</script>
+</body>
+</html>

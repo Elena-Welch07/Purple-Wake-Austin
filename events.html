@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="netlify-emails" content="disabled">
+<title>Group Events | Purple Wake Austin</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>emailjs.init('lEuUre-FG6qiBK9lR');</script>
+<style>
+
+:root{--purple:#6B3FA0;--purple-mid:#8B5FBF;--purple-lt:#D4B8F0;--purple-xlt:#F3ECFD;--white:#fff;--off-white:#FAFAFA;--slate:#2A2535;--slate-mid:#4A4260;--gold:#D4A017;--radius-md:16px;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--slate-mid);overflow-x:hidden;padding-top:88px;}
+#siteHeader{position:fixed;top:0;left:0;right:0;z-index:200;}
+#mainNav{display:flex;align-items:center;justify-content:space-between;padding:12px 48px;transition:background .3s;}
+#mainNav.scrolled{background:rgba(255,255,255,.97);box-shadow:0 2px 24px rgba(107,63,160,.1);}
+.nav-logo img{height:52px;width:auto;}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.9);text-decoration:none;transition:color .2s;}
+#mainNav.scrolled .nav-links a{color:var(--slate-mid);}
+.nav-cta{background:#fff;color:var(--purple)!important;padding:10px 24px;border-radius:40px;font-weight:700!important;}
+#mainNav.scrolled .nav-cta{background:var(--purple)!important;color:#fff!important;}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;}
+#mainNav.scrolled .hamburger span{background:var(--slate);}
+#mobileMenu{display:none;position:fixed;inset:0;z-index:300;background:var(--slate);flex-direction:column;align-items:center;justify-content:center;gap:20px;overflow-y:auto;padding:80px 20px 40px;}
+#mobileMenu a{font-family:'Bebas Neue',sans-serif;font-size:38px;letter-spacing:2px;color:#fff;text-decoration:none;}
+#mobileMenu .mob-cta{background:var(--purple);padding:12px 40px;border-radius:50px;font-size:30px!important;}
+.contact-bar{background:var(--purple);padding:8px 48px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;}
+.contact-bar a{display:flex;align-items:center;gap:7px;color:#fff;text-decoration:none;font-size:13px;font-weight:600;}
+.contact-bar-div{width:1px;height:14px;background:rgba(255,255,255,.3);}
+.page-hero{position:relative;height:52vh;min-height:380px;display:flex;align-items:flex-end;overflow:hidden;margin-top:-112px;padding-top:112px;}
+.page-hero-bg{pointer-events:none;position:absolute;inset:0;background-size:cover;background-position:center 35%;}
+.page-hero-overlay{pointer-events:none;position:absolute;inset:0;background:linear-gradient(180deg,rgba(42,37,53,.15) 0%,rgba(42,37,53,.78) 100%);}
+.page-hero-content{position:relative;z-index:2;padding:0 64px 52px;}
+.page-hero-eyebrow{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--purple-lt);margin-bottom:10px;}
+.page-hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(48px,7vw,90px);line-height:.93;color:#fff;letter-spacing:2px;}
+section{padding:72px 64px;}
+.section-label{font-size:11px;font-weight:700;letter-spacing:4px;text-transform:uppercase;color:var(--purple);margin-bottom:10px;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(36px,4vw,52px);letter-spacing:1px;color:var(--slate);line-height:1;margin-bottom:16px;}
+.section-body{font-size:16px;font-weight:300;line-height:1.75;color:var(--slate-mid);}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s,transform .6s;}
+.reveal.visible{opacity:1;transform:none;}
+.reveal-delay-1{transition-delay:.1s;}.reveal-delay-2{transition-delay:.2s;}.reveal-delay-3{transition-delay:.3s;}
+.btn-primary{display:inline-block;background:var(--purple);color:#fff;font-size:14px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:14px 36px;border-radius:50px;text-decoration:none;border:none;cursor:pointer;transition:background .2s;}
+.btn-primary:hover{background:var(--purple-mid);}
+footer{background:var(--slate);padding:48px 64px 28px;}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;padding-bottom:24px;border-bottom:1px solid rgba(255,255,255,.1);}
+.footer-logo img{height:48px;width:auto;}
+.footer-links{display:flex;gap:28px;flex-wrap:wrap;}
+.footer-links a{font-size:13px;color:rgba(255,255,255,.55);text-decoration:none;}
+.footer-links a:hover{color:var(--purple-lt);}
+.footer-bottom{padding-top:20px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;}
+.footer-copy{font-size:12px;color:rgba(255,255,255,.3);}
+@media(max-width:900px){
+  body{padding-top:96px;}
+  #mainNav{padding:14px 20px;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .contact-bar{background:var(--purple);padding:8px 48px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;}
+  section{padding:48px 20px;}
+  .page-hero-content{padding:0 24px 44px;}
+  footer{padding:40px 24px 24px;}
+}
+.form-card{background:#fff;border-radius:20px;box-shadow:0 8px 48px rgba(107,63,160,.09);border:1px solid rgba(107,63,160,.08);padding:48px;max-width:760px;margin:0 auto;}
+.form-section{margin-bottom:32px;padding-bottom:32px;border-bottom:1px solid #f0eaf8;}
+.form-section:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.form-section-title{font-family:'Bebas Neue',sans-serif;font-size:28px;letter-spacing:1px;color:var(--slate);margin-bottom:6px;}
+.form-section-sub{font-size:14px;color:var(--slate-mid);margin-bottom:16px;line-height:1.6;}
+.req{display:inline-block;background:var(--purple);color:#fff;font-size:9px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:3px 8px;border-radius:20px;margin-left:8px;vertical-align:middle;}
+.choice-btn{display:flex;align-items:center;gap:14px;padding:14px 18px;border:2px solid #e8e0f5;border-radius:12px;cursor:pointer;background:#fff;text-align:left;width:100%;margin-bottom:10px;transition:all .2s;}
+.choice-btn:hover,.choice-btn.sel{border-color:var(--purple);background:var(--purple-xlt);}
+.choice-dot{width:18px;height:18px;border-radius:50%;border:2px solid #c4b8d8;flex-shrink:0;}
+.choice-btn.sel .choice-dot{background:var(--purple);border-color:var(--purple);}
+.choice-label{font-weight:600;font-size:15px;color:var(--slate);}
+.choice-sub{font-size:13px;color:var(--slate-mid);margin-top:2px;}
+.lesson-opts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px;}
+.lesson-chk{display:flex;align-items:center;gap:10px;padding:12px 16px;border:2px solid #e8e0f5;border-radius:10px;cursor:pointer;transition:all .2s;}
+.lesson-chk:hover,.lesson-chk.sel{border-color:var(--purple);background:var(--purple-xlt);}
+.lesson-chk input{accent-color:var(--purple);width:15px;height:15px;flex-shrink:0;}
+.lesson-chk span{font-size:14px;font-weight:500;color:var(--slate);}
+.extras-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.extra-card{border:2px solid #e8e0f5;border-radius:12px;padding:16px;cursor:pointer;transition:all .2s;}
+.extra-card:hover,.extra-card.sel{border-color:var(--purple);background:var(--purple-xlt);}
+.extra-icon{font-size:24px;margin-bottom:6px;}
+.extra-name{font-weight:600;font-size:14px;color:var(--slate);margin-bottom:3px;}
+.extra-note{font-size:12px;color:var(--slate-mid);line-height:1.5;}
+.extra-tag{font-size:11px;font-weight:700;color:var(--purple);margin-top:4px;}
+.input-label{font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--slate);display:block;margin-bottom:7px;}
+.text-input{width:100%;padding:13px 16px;border:2px solid #e8e0f5;border-radius:12px;font-size:15px;color:var(--slate);outline:none;font-family:'DM Sans',sans-serif;background:#fff;transition:border-color .2s;margin-bottom:14px;}
+.text-input:focus{border-color:var(--purple);}
+.text-input.err{border-color:#e00;}
+textarea.text-input{resize:vertical;min-height:80px;}
+.input-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:900px){
+  .form-card{padding:24px 16px;}
+  .lesson-opts{grid-template-columns:1fr;}
+  .extras-grid{grid-template-columns:1fr;}
+  .input-grid{grid-template-columns:1fr;}
+}
+</style>
+  <!-- Google Ads tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18034580260"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-18034580260');
+  </script>
+<script>/* Public portfolio copy: no transactions or booking submissions. */
+(function(){
+  function blocked(el){
+    var action=(el.getAttribute('onclick')||'').toLowerCase();
+    var href=(el.getAttribute('href')||'').toLowerCase();
+    return /opencampmodal|campnext|docamppay|submitreq|showcs2|initcsq/.test(action)
+      || /squareup\.com\/appointments|squareup\.com\/checkout|docs\.google\.com\/forms/.test(href);
+  }
+  document.addEventListener('click',function(e){
+    var el=e.target.closest('a,button,input[type="submit"]');
+    if(el && blocked(el)){
+      e.preventDefault();e.stopImmediatePropagation();
+      alert('This is a portfolio demonstration. Booking and payments are disabled. Please visit purplewakeaustin.com for real bookings.');
+    }
+  },true);
+  document.addEventListener('submit',function(e){e.preventDefault();e.stopImmediatePropagation();alert('Forms are disabled in this portfolio demonstration.');},true);
+})();</script>
+</head>
+<body>
+<div id="portfolio-notice" style="position:relative;z-index:99999;background:#efe8ff;color:#35204f;text-align:center;padding:12px 18px;font:600 14px Arial,sans-serif;line-height:1.5">PORTFOLIO DEMO — Booking, payment, and event requests are disabled. For real bookings visit <a href="https://www.purplewakeaustin.com/" style="color:#50218a;text-decoration:underline">Purple Wake Austin</a>.</div>
+<div id="siteHeader">
+  <div class="contact-bar">
+    <a href="tel:5128392711">📞 512-839-2711</a>
+    <div class="contact-bar-div"></div>
+    <a href="mailto:elenafwelch@gmail.com">✉️ elenafwelch@gmail.com</a>
+    <div class="contact-bar-div"></div>
+    <a href="https://www.instagram.com/purplewake.watersports" target="_blank">📸 @purplewake.watersports</a>
+  </div>
+  <div id="mainNav">
+    <a href="index.html"><img src="images/logo.png" alt="Purple Wake" style="height:52px;width:auto;"></a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="camps.html">Camps</a></li>
+      <li><a href="privates.html">Privates</a></li>
+      <li><a href="events.html">Group Events</a></li>
+      <li><a href="what-to-expect.html">What to Expect</a></li>
+      <li><a href="about.html">Captain &amp; Crew</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="privates.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></button>
+  </div>
+</div>
+
+<div id="mobileMenu">
+  <button onclick="closeMenu()" style="position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:32px;cursor:pointer;line-height:1;">✕</button>
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="camps.html" onclick="closeMenu()">Camps</a>
+  <a href="privates.html" onclick="closeMenu()">Privates</a>
+  <a href="events.html" onclick="closeMenu()">Group Events</a>
+  <a href="what-to-expect.html" onclick="closeMenu()" style="font-size:32px!important;">What to Expect</a>
+  <a href="about.html" onclick="closeMenu()">Captain &amp; Crew</a>
+  <a href="faq.html" onclick="closeMenu()" style="font-size:32px!important;">FAQ</a>
+  <a href="privates.html" onclick="closeMenu()" class="mob-cta">Book Now</a>
+</div>
+
+<div class="page-hero">
+  <div class="page-hero-bg" style="background-image:url('images/events_hero.png');"></div>
+  <div class="page-hero-overlay"></div>
+  <div class="page-hero-content">
+    <div class="page-hero-eyebrow">Lake Austin · Up to 7 Guests</div>
+    <h1 class="page-hero-title">Group<br>Events</h1>
+  </div>
+</div>
+
+<section>
+  <div class="reveal" style="text-align:center;max-width:600px;margin:0 auto 48px;">
+    <div class="section-label">Make It Yours</div>
+    <h2 class="section-title">Plan Your Perfect Day on the Lake</h2>
+    <p class="section-body">Birthdays, bach parties, friend groups — we make it happen. Fill out the form and we'll reach out within 24 hours with availability and pricing.</p>
+    <div style="display:inline-flex;align-items:center;gap:8px;background:var(--slate);color:#fff;font-size:13px;font-weight:600;padding:10px 20px;border-radius:40px;margin-top:14px;">👥 Maximum 7 guests per event</div>
+  </div>
+
+  <div class="form-card reveal" id="main-form">
+
+    <div class="form-section">
+      <div class="form-section-title">What's the Occasion? <span class="req">Required</span></div>
+      <div class="form-section-sub">Select one — or choose "Other" and describe it below.</div>
+      <button type="button" class="choice-btn" onclick="selEv(this,'Birthday Party')"><div class="choice-dot"></div><div><div class="choice-label">🎂 Birthday Party</div><div class="choice-sub">Celebrate on the water with your crew</div></div></button>
+      <button type="button" class="choice-btn" onclick="selEv(this,'Bachelorette / Bachelor Party')"><div class="choice-dot"></div><div><div class="choice-label">💍 Bach Party</div><div class="choice-sub">Send them off in style on Lake Austin</div></div></button>
+      <button type="button" class="choice-btn" onclick="selEv(this,'Friend Group')"><div class="choice-dot"></div><div><div class="choice-label">🤙 Friend Group</div><div class="choice-sub">A sick day on the lake with your crew</div></div></button>
+      <button type="button" class="choice-btn" onclick="selEv(this,'School / Youth Group')"><div class="choice-dot"></div><div><div class="choice-label">🏫 School / Youth Group</div><div class="choice-sub">Fun and safe for students and youth groups</div></div></button>
+      <button type="button" class="choice-btn" onclick="selEv(this,'Other')"><div class="choice-dot"></div><div><div class="choice-label">✏️ Other — I'll describe it below</div></div></button>
+      <div id="ev-err" style="color:#e00;font-size:13px;display:none;margin-top:8px;">Please select your event type.</div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">What Do You Want to Do? <span class="req">Required</span></div>
+      <div class="form-section-sub">Choose how your group wants to spend the time on the lake.</div>
+      <button type="button" class="choice-btn" onclick="selAct(this,'Lessons — we want to ride')"><div class="choice-dot"></div><div><div class="choice-label">🏄 Lessons — We want to ride</div><div class="choice-sub">Surfing, wakeboarding, or foiling coaching</div></div></button>
+      <button type="button" class="choice-btn" onclick="selAct(this,'Float &amp; Hang — just chill')"><div class="choice-dot"></div><div><div class="choice-label">🌊 Float &amp; Hang — Just chill</div><div class="choice-sub">Cruise the lake, relax on the boat, enjoy the vibes</div></div></button>
+      <button type="button" class="choice-btn" onclick="selAct(this,'Both — some riding and some chilling')"><div class="choice-dot"></div><div><div class="choice-label">✌️ Both — Some riding, some chilling</div><div class="choice-sub">Mix of lessons and relaxing on the water</div></div></button>
+      <div id="act-err" style="color:#e00;font-size:13px;display:none;margin-top:8px;">Please choose an activity.</div>
+      <div id="lesson-types" style="display:none;margin-top:16px;padding:16px;background:var(--purple-xlt);border-radius:12px;">
+        <div style="font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--purple);margin-bottom:12px;">Which lessons? (select all that apply)</div>
+        <div class="lesson-opts">
+          <label class="lesson-chk" onclick="this.classList.toggle('sel')"><input type="checkbox" name="lesson" value="Wakesurfing"><span>🌊 Wakesurfing</span></label>
+          <label class="lesson-chk" onclick="this.classList.toggle('sel')"><input type="checkbox" name="lesson" value="Wakeboarding"><span>🏂 Wakeboarding</span></label>
+          <label class="lesson-chk" onclick="this.classList.toggle('sel')"><input type="checkbox" name="lesson" value="Foiling"><span>🚀 Foiling</span></label>
+          <label class="lesson-chk" onclick="this.classList.toggle('sel')"><input type="checkbox" name="lesson" value="Not sure yet"><span>🤷 Not sure yet</span></label>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Add-Ons &amp; Extras</div>
+      <div class="form-section-sub">Optional — some extras have additional costs included in your quote.</div>
+      <div class="extras-grid">
+        <div class="extra-card" onclick="this.classList.toggle('sel');checkDrinks()"><div class="extra-icon">🦩</div><div class="extra-name">Floaties &amp; Inflatables</div><div class="extra-note">Fun lake floaties for hanging out on the water</div><div class="extra-tag">Included on request</div></div>
+        <div class="extra-card" onclick="this.classList.toggle('sel')"><div class="extra-icon">🎀</div><div class="extra-name">Boat Decorations</div><div class="extra-note">Balloons, banners &amp; themed decor</div><div class="extra-tag">Additional cost</div></div>
+        <div class="extra-card" onclick="this.classList.toggle('sel')"><div class="extra-icon">📸</div><div class="extra-name">Photographer</div><div class="extra-note">Professional on-water photographer for the day</div><div class="extra-tag">Additional cost</div></div>
+        <div class="extra-card" id="drinks-card" onclick="this.classList.toggle('sel');checkDrinks()"><div class="extra-icon">🥤</div><div class="extra-name">Drinks</div><div class="extra-note">Non-alcoholic drinks on the boat</div><div class="extra-tag">Additional cost</div></div>
+      </div>
+      <div id="drinks-field" style="display:none;margin-top:14px;">
+        <label class="input-label">What drinks would you like? 🥤</label>
+        <input type="text" class="text-input" id="drinks-req" placeholder="e.g. Coke, Sprite, water, Gatorade...">
+      </div>
+    </div>
+
+    <div class="form-section">
+      <div class="form-section-title">Your Details <span class="req">Required</span></div>
+      <div class="input-grid" style="margin-bottom:0;">
+        <div><label class="input-label">First Name *</label><input type="text" class="text-input" id="f-first" placeholder="First"></div>
+        <div><label class="input-label">Last Name *</label><input type="text" class="text-input" id="f-last" placeholder="Last"></div>
+        <div><label class="input-label">Email *</label><input type="email" class="text-input" id="f-email" placeholder="you@email.com"></div>
+        <div><label class="input-label">Phone *</label><input type="tel" class="text-input" id="f-phone" placeholder="(512) 555-0000"></div>
+        <div><label class="input-label">Preferred Date</label><input type="date" class="text-input" id="f-date"></div>
+        <div><label class="input-label">Number of Guests</label><select class="text-input" id="f-guests"><option>1–2 guests</option><option>3–4 guests</option><option>5–6 guests</option><option>7 guests (max)</option></select></div>
+      </div>
+      <label class="input-label" style="margin-top:14px;">Anything else we should know?</label>
+      <textarea class="text-input" id="f-notes" placeholder="Special requests, theme ideas, questions..."></textarea>
+      <div id="det-err" style="color:#e00;font-size:13px;display:none;">Please fill in your name, email, and phone.</div>
+    </div>
+
+    <button onclick="submitReq()" class="btn-primary" style="width:100%;padding:18px;font-size:15px;margin-top:8px;">Send My Event Request →</button>
+    <p style="text-align:center;font-size:12px;color:#9990AA;margin-top:12px;">We'll respond within 24 hours with availability and a custom quote.</p>
+  </div>
+
+  <div id="success-box" style="display:none;text-align:center;padding:48px 20px;max-width:560px;margin:0 auto;">
+    <div style="font-size:56px;margin-bottom:16px;">🤙</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:var(--slate);letter-spacing:1px;margin-bottom:12px;">Request Sent!</div>
+    <p style="font-size:16px;color:var(--slate-mid);line-height:1.7;margin-bottom:8px;">We'll be in touch within 24 hours with availability and pricing.</p>
+    <p style="font-size:14px;color:#9990AA;margin-bottom:28px;">Questions? <a href="tel:5128392711" style="color:var(--purple);">512-839-2711</a></p>
+    <a href="index.html" class="btn-primary">Back to Home</a>
+  </div>
+</section>
+
+<section style="background:var(--slate);text-align:center;">
+  <div class="reveal">
+    <div class="section-label" style="color:var(--purple-lt);">Questions?</div>
+    <h2 class="section-title" style="color:#fff;">Let's Make It Happen</h2>
+    <p style="font-size:17px;font-weight:300;color:rgba(255,255,255,.75);max-width:420px;margin:0 auto 28px;line-height:1.7;">Call or text us directly to talk through your event.</p>
+    <a href="tel:5128392711" class="btn-primary">Call 512-839-2711</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo"><img src="images/logo.png" alt="Purple Wake"></div>
+    <div class="footer-links">
+      <a href="index.html">Home</a><a href="camps.html">Camps</a>
+      <a href="privates.html">Privates</a><a href="events.html">Group Events</a>
+      <a href="mailto:elenafwelch@gmail.com">elenafwelch@gmail.com</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Purple Wake Austin. All rights reserved.</div>
+    <div class="footer-copy"><a href="mailto:elenafwelch@gmail.com">elenafwelch@gmail.com</a> · 512-839-2711</div>
+  </div>
+</footer>
+
+<script>
+let selEvent='',selActivity='';
+function selEv(btn,val){document.querySelectorAll('.choice-btn').forEach(b=>{if(b.onclick&&b.onclick.toString().includes('selEv'))b.classList.remove('sel');});btn.classList.add('sel');selEvent=val;document.getElementById('ev-err').style.display='none';}
+function selAct(btn,val){const btns=document.querySelectorAll('.choice-btn');btns.forEach(b=>{if(b.onclick&&b.onclick.toString().includes('selAct'))b.classList.remove('sel');});btn.classList.add('sel');selActivity=val;document.getElementById('act-err').style.display='none';document.getElementById('lesson-types').style.display=(val.includes('Lesson')||val.includes('Both'))?'block':'none';}
+function checkDrinks(){const sel=document.getElementById('drinks-card').classList.contains('sel');document.getElementById('drinks-field').style.display=sel?'block':'none';}
+function submitReq(){
+  let ok=true;
+  if(!selEvent){document.getElementById('ev-err').style.display='block';ok=false;}
+  if(!selActivity){document.getElementById('act-err').style.display='block';ok=false;}
+  const first=document.getElementById('f-first').value.trim();
+  const last=document.getElementById('f-last').value.trim();
+  const email=document.getElementById('f-email').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  if(!first||!last||!email||!phone){document.getElementById('det-err').style.display='block';ok=false;}
+  else document.getElementById('det-err').style.display='none';
+  if(!ok){document.querySelector('[style*="display:block"][id$="-err"]')?.scrollIntoView({behavior:'smooth',block:'center'});return;}
+  const lessons=Array.from(document.querySelectorAll('input[name="lesson"]:checked')).map(i=>i.value);
+  const extras=Array.from(document.querySelectorAll('.extra-card.sel')).map(c=>c.querySelector('.extra-name').textContent);
+  const drinks=document.getElementById('drinks-req').value.trim();
+  const date=document.getElementById('f-date').value;
+  const guests=document.getElementById('f-guests').value;
+  const notes=document.getElementById('f-notes').value.trim();
+  const subj=encodeURIComponent('Group Event Request — '+selEvent+' — '+first+' '+last);
+  const body=encodeURIComponent(['Name: '+first+' '+last,'Email: '+email,'Phone: '+phone,'Preferred Date: '+(date||'Flexible'),'Guests: '+guests,'Event Type: '+selEvent,'Activity: '+selActivity,lessons.length?'Lessons: '+lessons.join(', '):'',extras.length?'Add-ons: '+extras.join(', '):'',drinks?'Drinks: '+drinks:'',notes?'Notes: '+notes:''].filter(Boolean).join('\n'));
+  window.location.href='mailto:elenafwelch@gmail.com?subject='+subj+'&body='+body;
+  document.getElementById('main-form').style.display='none';
+  document.getElementById('success-box').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function toggleMenu(){const m=document.getElementById('mobileMenu');m.style.display=m.style.display==='flex'?'none':'flex';document.body.style.overflow=m.style.display==='flex'?'hidden':'';}
+function closeMenu(){document.getElementById('mobileMenu').style.display='none';document.body.style.overflow='';}
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('mainNav');
+  if (window.scrollY > 10) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+window.dispatchEvent(new Event('scroll'));
+
+document.addEventListener('DOMContentLoaded', function() {
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) { entry.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(function(el) { observer.observe(el); });
+});
+</script>
+</body>
+</html>
